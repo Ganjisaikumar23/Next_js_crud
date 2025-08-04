@@ -34,3 +34,21 @@ export async function POST(request){
     )
     return NextResponse.json({Laptop :"Laptop added sucessfully "})
 }
+
+
+export async function PUT(request) {
+    
+    const laptopId= await request.nextUrl.searchParams.get("id")
+
+    const {newTitle:title,newModel:laptopmodel,newPrice:laptopprice} = await request.json()
+    await LaptopModel.findByIdAndUpdate(laptopId,{ title,laptopmodel,laptopprice})
+
+    return NextResponse.json({LaptopUpdate :"all the data update"})
+}
+
+export async function DELETE(request) {
+    
+     const laptopId= await request.nextUrl.searchParams.get("id");
+     await LaptopModel.findByIdAndDelete(laptopId)
+return NextResponse.json({laptopDelect:"particular data Laptop delected thtough id"})
+}
