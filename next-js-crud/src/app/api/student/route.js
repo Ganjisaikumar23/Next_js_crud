@@ -1,14 +1,12 @@
 import { DBconnection } from "@/app/utils/config/db";
 import { NextRequest, NextResponse } from "next/server";
 
+const connectDB = async () => {
+  await DBconnection();
+};
 
-const connectDB= async () => {
-    await DBconnection()
-}
-
-connectDB()
+connectDB();
 
 export async function GET() {
-    return NextResponse.json({student:"all student are present"})
-    
+  return NextResponse.json({ student: "all student are present" });
 }
